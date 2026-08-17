@@ -434,166 +434,408 @@ a {
   pointer-events: none;
 }
 
-/* ================================
-   TABLET
-================================ */
+/* =========================================
+   HOME PAGE - RESPONSIVE
+========================================= */
+
+/* ---------- TABLET ---------- */
 
 @media (max-width: 900px) {
-  .header-container {
-    padding: 16px 25px;
-    flex-direction: column;
-    gap: 16px;
+
+  .profile-photo-wrapper {
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .header-scrolled .header-container {
-    padding: 12px 25px;
-  }
-
-  .nav-list {
+  .home-page-shell {
     width: 100%;
-    gap: 6px;
+    padding: 25px 25px 60px;
+    box-sizing: border-box;
+  }
+
+  .home-page {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home-navbar {
+    width: 100%;
+    height: auto;
+    min-height: 58px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+  }
+
+  .nav-links {
+    gap: 14px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .professional-nav-link {
-    padding: 8px 12px;
-    font-size: 13.5px;
+  .hero {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 45px 10px 30px;
+    box-sizing: border-box;
+  }
+
+  .hero-left {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .status-card-wrapper {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .toolbox {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
 
-/* ================================
-   MOBILE
-================================ */
+/* ---------- MOBILE ---------- */
 
 @media (max-width: 600px) {
-  .header-container {
+
+  .home-page-shell {
     width: 100%;
-    padding: 12px 14px;
+    max-width: 100%;
+    padding: 20px 12px 50px;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .home-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+  /* NAVBAR */
+
+  .home-navbar {
+    width: 100%;
+    height: auto;
+    min-height: 60px;
+    padding: 12px 10px;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 12px;
     box-sizing: border-box;
   }
 
-  .header-scrolled .header-container {
-    padding: 10px 14px;
+  .logo {
+    font-size: 17px;
+    text-align: center;
   }
 
-  /* Logo */
-  .logo-text {
+  .nav-links {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 7px 12px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+
+  /* HERO */
+
+  .hero {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 35px 4px 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    box-sizing: border-box;
+  }
+
+
+  /* HERO CONTENT */
+
+  .hero-left {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .hero-label {
+    margin-bottom: 14px;
+    font-size: 10px;
+    letter-spacing: 1.6px;
+  }
+
+
+  /* HEADING */
+
+  .hero-left h1 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(31px, 9vw, 40px);
+    line-height: 1.08;
+    letter-spacing: -1px;
+    overflow-wrap: break-word;
+  }
+
+
+  /* DESCRIPTION */
+
+  .hero-description {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px auto 0;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+
+  /* BUTTONS */
+
+  .hero-buttons {
+    width: 100%;
+    margin-top: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 11px;
+  }
+
+  .view-work-button,
+  .contact-button {
+    width: 100%;
+    min-height: 46px;
+    height: 46px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    font-size: 13px;
+  }
+
+
+  /* SOCIAL LINKS */
+
+  .social-links {
+    width: 100%;
+    justify-content: center;
+    gap: 13px;
+    margin-top: 22px;
+  }
+
+  .social-links a {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+
+  /* STATUS CARD */
+
+  .status-card-wrapper {
+    width: 100%;
+    max-width: 100%;
+    padding: 7px;
+    box-sizing: border-box;
+    border-radius: 12px;
+  }
+
+  .status-card {
+    width: 100%;
+    min-height: 0;
+    padding: 22px 15px;
+    box-sizing: border-box;
+    border-radius: 9px;
+  }
+
+
+  /* PROFILE PHOTO */
+
+  .profile-photo-wrapper {
+    max-width: 220px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 18px;
+  }
+
+  .profile-photo {
+    max-width: 100%;
+    height: auto;
+  }
+
+
+  /* CURRENTLY */
+
+  .currently {
+    margin-bottom: 14px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+
+  /* STATUS DESCRIPTION */
+
+  .status-description {
+    margin-bottom: 18px;
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+
+  /* STATISTICS */
+
+  .status-stat {
+    margin-bottom: 9px;
+    padding: 8px 9px;
+  }
+
+  .status-stat h2 {
     font-size: 19px;
+    line-height: 1.2;
   }
 
-  .logo-bracket {
+  .status-stat p {
+    font-size: 9px;
+    letter-spacing: 0.8px;
+  }
+
+
+  /* TOOLBOX */
+
+  .toolbox {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 22px 3px 30px;
+    box-sizing: border-box;
+  }
+
+  .toolbox h2 {
+    margin-bottom: 14px;
     font-size: 17px;
   }
 
-  .logo-emoji {
-    font-size: 19px;
-  }
-
-  /* Navigation */
-  .professional-nav {
+  .toolbox-list {
     width: 100%;
-  }
-
-  .nav-list {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 6px;
   }
 
-  .professional-nav-link {
-    width: 100%;
-    padding: 9px 4px;
-    font-size: 12px;
-    text-align: center;
+  .toolbox-item {
+    padding: 6px 8px;
+    font-size: 9px;
+    max-width: 100%;
     box-sizing: border-box;
   }
 }
 
 
-/* ================================
-   SMALL MOBILE
-================================ */
+/* ---------- SMALL PHONES ---------- */
 
 @media (max-width: 400px) {
-  .header-container {
-    padding: 10px 10px;
-    gap: 10px;
+
+  .home-page-shell {
+    padding: 16px 9px 40px;
   }
 
-  .header-scrolled .header-container {
-    padding: 8px 10px;
+  .home-navbar {
+    padding: 10px 7px;
   }
 
-  .nav-list {
-    gap: 4px;
-  }
-
-  .professional-nav-link {
-    padding: 8px 2px;
-    font-size: 11px;
-  }
-
-  .logo-text {
-    font-size: 18px;
-  }
-
-  .logo-bracket {
+  .logo {
     font-size: 16px;
   }
 
-  .logo-emoji {
+  .nav-links {
+    gap: 6px 9px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+  }
+
+  .hero {
+    padding: 28px 2px 20px;
+    gap: 25px;
+  }
+
+  .hero-label {
+    font-size: 9px;
+    letter-spacing: 1.3px;
+  }
+
+  .hero-left h1 {
+    font-size: 29px;
+    line-height: 1.12;
+    letter-spacing: -0.7px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .view-work-button,
+  .contact-button {
+    min-height: 44px;
+    height: 44px;
+  }
+
+  .status-card {
+    padding: 19px 12px;
+  }
+
+  .profile-photo-wrapper {
+    max-width: 190px;
+  }
+
+  .status-stat h2 {
     font-size: 18px;
   }
-}
-/* =========================================
-   COMMON RESPONSIVE PAGE SYSTEM
-========================================= */
 
-.page-shell {
-  width: 100%;
-  max-width: 1250px;
-  margin: 0 auto;
-  padding: 20px 60px 60px;
-  background: rgba(26, 26, 38, 0.4);
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  box-sizing: border-box;
-}
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media (max-width: 900px) {
-  .page-shell {
-    padding: 20px 35px 50px;
+  .status-stat p {
+    font-size: 8px;
   }
-}
 
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-  .page-shell {
-    width: 100%;
-    padding: 15px 16px 40px;
-    border-radius: 8px;
+  .toolbox {
+    padding-left: 1px;
+    padding-right: 1px;
   }
-}
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
-@media (max-width: 400px) {
-  .page-shell {
-    padding: 12px 12px 35px;
+  .toolbox-item {
+    padding: 5px 7px;
+    font-size: 8.5px;
   }
 }

@@ -95,44 +95,34 @@ const Aboutpage = () => {
           />
 
           <FadeInUp delay={0.3}>
-            <section>
-              <motion.p
-                className="hero-section"
-                style={{
-                  fontSize: "50px",
-                  fontWeight: "normal",
-                  paddingTop: "20px",
-                  paddingLeft: "20px",
-                  paddingBottom: "0px",
-                  gap: "24px",
-                  color: "#ffffff",
-                  textShadow: "0 0 30px rgba(255,255,255,0.05)",
-                }}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <motion.span
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                >
-                  Software Engineer,
-                </motion.span>
-                <br />
-                <motion.span
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.25 }}
-                >
-                  collaborator, relentless simplifier.
-                </motion.span>
-              </motion.p>
-            </section>
-          </FadeInUp>
+  <section className="about-hero-section">
+    <motion.p
+      className="about-hero-title"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.span
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+      >
+        Software Engineer,
+      </motion.span>
+
+      <motion.span
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.25 }}
+      >
+        collaborator, relentless simplifier.
+      </motion.span>
+    </motion.p>
+  </section>
+</FadeInUp>
 
           <FadeInUp delay={0.4}>
             <section>
