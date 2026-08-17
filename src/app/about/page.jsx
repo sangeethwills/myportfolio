@@ -95,7 +95,7 @@ const Aboutpage = () => {
           />
 
           <FadeInUp delay={0.3}>
-  <section className="about-hero-section">
+  <section className="about-hero-section" style={{color:"white"}}>
     <motion.p
       className="about-hero-title"
       initial={{ opacity: 0, y: 30 }}
