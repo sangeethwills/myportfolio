@@ -90,7 +90,7 @@ function Education() {
       organization: "Accord Info Matrix",
       description:
         "Completed training in fundamental communication skills, covering verbal and non-verbal communication, the 7 C's of communication, active listening, feedback, conflict resolution, and interpersonal skills..",
-      image: "/certificates/communication.jpeg",
+      image: "/certificates/Communication.jpeg",
     },
   ];
 
