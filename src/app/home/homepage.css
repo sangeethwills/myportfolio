@@ -220,10 +220,32 @@
   border: 3px solid var(--card-bg);
 }
 
+.image-adder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.profile-hero-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+}
+
 @media (max-width: 900px) {
   .profile-photo-wrapper {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .profile-hero-img {
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 
@@ -490,6 +512,10 @@
     height: auto;
   }
 
+  .profile-hero-img {
+    max-width: 220px;
+  }
+
 
   /* TOOLBOX */
 
@@ -573,6 +599,7 @@
     padding: 5px 8px;
     font-size: 9px;
   }
+}
 
 
 /* =========================================

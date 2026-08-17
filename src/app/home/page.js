@@ -186,7 +186,7 @@ function Home() {
             </div>
             
               <div className="image-adder-container">
-                <img src="/me.png" style={{height:"500px",width:"400px",border:"10px",borderRadius:"200px"}}></img>
+                <img src="/me.png" className="profile-hero-img" style={{border:"10px",borderRadius:"200px"}}></img>
                 <h3 style={{paddingTop:"25px",color:"#2596be",fontFamily:"fangsong"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sangeeth - Developer 모</h3>
               </div>
             
