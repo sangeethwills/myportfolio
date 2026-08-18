@@ -16,7 +16,7 @@ const Projectpage = () => {
       title: "Public Grievance Portal",
       description:
         "A web application that allows users to submit complaints and track grievance information through an online portal.",
-      technologies: ["Python", "Flask", "MySQL", "HTML", "CSS"],
+      technologies: ["Java", "SpringBoot", "MySQL","React", "HTML", "CSS"],
       github: "https://github.com/sangeethwills/grievance-portal",
       demo: "https://grievance-portal-ten-chi.vercel.app/",
     },
@@ -24,7 +24,7 @@ const Projectpage = () => {
       title: "Real Time Bus Tracking System",
       description:
         "A real-time bus tracking application designed to display bus locations and provide useful transportation information.",
-      technologies: ["React", "Python", "Flask", "API"],
+      technologies: ["React", "Java","SpringBoot", "API"],
       github: "https://github.com/sangeethwills/realtimebustrackingsystem-/tree/main/client",
       demo: "https://realtimebustrackingsystem.vercel.app",
     },
