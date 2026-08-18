@@ -2,11 +2,11 @@ import nodemailer from "nodemailer";
 
 export async function POST(request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, subject, message } = await request.json();
 
     if (!name || !email || !message) {
       return Response.json(
-        { message: "Please fill all fields" },
+        { success: false, message: "Required fields are missing" },
         { status: 400 }
       );
     }
@@ -21,9 +21,9 @@ export async function POST(request) {
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      to: process.env.EMAIL_TO,
       replyTo: email,
-      subject: `Portfolio Contact - ${name}`,
+      subject: subject || `Portfolio Contact - ${name}`,
       text: `
 Name: ${name}
 Email: ${email}
@@ -33,15 +33,18 @@ ${message}
       `,
     });
 
-    return Response.json(
-      { message: "Message sent successfully!" },
-      { status: 200 }
-    );
+    return Response.json({
+      success: true,
+      message: "Email sent successfully",
+    });
   } catch (error) {
-    console.error("Email error:", error);
+    console.error("Nodemailer error:", error);
 
     return Response.json(
-      { message: "Failed to send email" },
+      {
+        success: false,
+        message: "Failed to send email",
+      },
       { status: 500 }
     );
   }
