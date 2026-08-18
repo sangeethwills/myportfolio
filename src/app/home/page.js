@@ -120,7 +120,7 @@ function Home() {
                 </AnimatedButton>
                
 
-                 <AnimatedButton href="Sangeeth Resume.pdf" className="btn-download">
+                 <AnimatedButton href="Sangeeth_Resume.pdf" className="btn-download">
                   Download CV
                 </AnimatedButton>
               </div>
