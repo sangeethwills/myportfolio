@@ -4,10 +4,28 @@ export async function POST(request) {
   try {
     const { name, email, subject, message } = await request.json();
 
+    console.log("Contact request received");
+
     if (!name || !email || !message) {
       return Response.json(
-        { success: false, message: "Required fields are missing" },
+        {
+          success: false,
+          message: "Required fields are missing",
+        },
         { status: 400 }
+      );
+    }
+
+    // Check environment variables
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error("Email environment variables are missing");
+
+      return Response.json(
+        {
+          success: false,
+          message: "Email server configuration is missing",
+        },
+        { status: 500 }
       );
     }
 
@@ -19,9 +37,14 @@ export async function POST(request) {
       },
     });
 
+    // Verify Gmail SMTP connection
+    await transporter.verify();
+
+    console.log("SMTP connection successful");
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_TO,
+      to: process.env.EMAIL_TO || process.env.EMAIL_USER,
       replyTo: email,
       subject: subject || `Portfolio Contact - ${name}`,
       text: `
@@ -33,17 +56,20 @@ ${message}
       `,
     });
 
+    console.log("Email sent successfully");
+
     return Response.json({
       success: true,
       message: "Email sent successfully",
     });
   } catch (error) {
-    console.error("Nodemailer error:", error);
+    console.error("Nodemailer ERROR:", error);
 
     return Response.json(
       {
         success: false,
         message: "Failed to send email",
+        error: error.message,
       },
       { status: 500 }
     );
