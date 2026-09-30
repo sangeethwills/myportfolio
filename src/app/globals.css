@@ -898,3 +898,103 @@ a {
     font-size: 8.5px;
   }
 }
+
+/* =========================================
+   MOBILE 3-DOT NAVIGATION
+   Desktop/tablet navigation remains unchanged
+========================================= */
+
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .header-container {
+    position: relative;
+  }
+
+  /* Three vertical dots - mobile only */
+  .menu-toggle {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    padding: 0;
+    border: 1px solid rgba(242, 140, 0, 0.35);
+    border-radius: 10px;
+    background: rgba(242, 140, 0, 0.06);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.25s ease;
+  }
+
+  .menu-toggle:hover,
+  .menu-toggle.active {
+    background: rgba(242, 140, 0, 0.15);
+    border-color: rgba(242, 140, 0, 0.65);
+    box-shadow: 0 0 18px rgba(242, 140, 0, 0.18);
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #f28c00;
+    box-shadow: 0 0 7px rgba(242, 140, 0, 0.55);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(3px);
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-3px);
+  }
+
+  /* Hidden until the three-dot button is opened */
+  .professional-nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 12px;
+    width: min(210px, calc(100vw - 24px));
+    padding: 8px;
+    border: 1px solid rgba(242, 140, 0, 0.3);
+    border-radius: 12px;
+    background: rgba(18, 18, 26, 0.98);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+    z-index: 1001;
+  }
+
+  .professional-nav.open {
+    display: block;
+  }
+
+  .nav-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .professional-nav-item {
+    width: 100%;
+  }
+
+  .professional-nav-link {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+}

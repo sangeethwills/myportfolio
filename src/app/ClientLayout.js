@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { AnimatedNavLink } from "../components/AnimatedComponents";
 
 function ClientLayout({ children }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -17,6 +19,28 @@ function ClientLayout({ children }) {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // close the menu after navigating to another page
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // close the menu when tapping outside the header
+  useEffect(() => {
+    const handleOutside = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("touchstart", handleOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("touchstart", handleOutside);
+    };
   }, []);
 
   const isActive = (href) => {
@@ -45,156 +69,163 @@ function ClientLayout({ children }) {
           <span></span>
         </div>
       </div>
-<motion.header
-  className={`professional-header ${
-    scrolled ? "header-scrolled" : ""
-  }`}
-  initial={{ opacity: 0, y: -100 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{
-    duration: 0.7,
-    ease: [0.25, 0.46, 0.45, 0.94],
-  }}
->
-  <div className="header-container">
 
-    {/* LOGO - LEFT SIDE */}
-    <motion.a
-      href="/home"
-      className="logo-container"
-      initial={{ opacity: 0, x: -30 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: 0.15 }}
-      whileHover={{ scale: 1.02 }}
-    >
-      <motion.span
-        className="logo-bracket"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, delay: 0.2 }}
-      >
-        {"<"}
-      </motion.span>
-
-      <motion.span
-        className="logo-text"
-        initial={{ opacity: 0, y: 10 }}
+      <motion.header
+        ref={headerRef}
+        className={`professional-header ${scrolled ? "header-scrolled" : ""}`}
+        initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.25 }}
-        whileHover={{
-          color: "#f28c00",
-          textShadow: "0 0 30px rgba(242, 140, 0, 0.6)",
-          transition: { duration: 0.2 },
-        }}
-      >
-        Sangeeth
-      </motion.span>
-
-      <motion.span
-        className="logo-bracket logo-slash"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, delay: 0.3 }}
-      >
-        {"/>"}
-      </motion.span>
-
-      <motion.span
-        className="logo-emoji"
-        initial={{ opacity: 0, rotate: -180, scale: 0 }}
-        animate={{ opacity: 1, rotate: 0, scale: 1 }}
         transition={{
-          duration: 0.6,
-          delay: 0.35,
-          type: "spring",
-          stiffness: 200,
-        }}
-        whileHover={{
-          rotate: [0, -10, 10, -10, 0],
-          transition: { duration: 0.5 },
+          duration: 0.7,
+          ease: [0.25, 0.46, 0.45, 0.94],
         }}
       >
-        🧑🏻‍💻
-      </motion.span>
-    </motion.a>
+        <div className="header-container">
+          {/* LOGO - LEFT SIDE */}
+          <motion.a
+            href="/home"
+            className="logo-container"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <motion.span
+              className="logo-bracket"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              {"<"}
+            </motion.span>
 
-    {/* NAVBAR - RIGHT SIDE */}
-    <nav
-      className="professional-nav"
-      style={{ color: "#FAF6E3" }}
-    >
-      <ul className="nav-list">
+            <motion.span
+              className="logo-text"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              whileHover={{
+                color: "#f28c00",
+                textShadow: "0 0 30px rgba(242, 140, 0, 0.6)",
+                transition: { duration: 0.2 },
+              }}
+            >
+              Sangeeth
+            </motion.span>
 
-        <AnimatedNavLink
-          href="/home"
-          className="nav-link"
-          index={0}
-          isActive={isActive("/home")}
-        >
-          Home
-        </AnimatedNavLink>
+            <motion.span
+              className="logo-bracket logo-slash"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+            >
+              {"/>"}
+            </motion.span>
 
-        <AnimatedNavLink
-          href="/about"
-          className="nav-link"
-          index={1}
-          isActive={isActive("/about")}
-        >
-          About
-        </AnimatedNavLink>
+            <motion.span
+              className="logo-emoji"
+              initial={{ opacity: 0, rotate: -180, scale: 0 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.35,
+                type: "spring",
+                stiffness: 200,
+              }}
+              whileHover={{
+                rotate: [0, -10, 10, -10, 0],
+                transition: { duration: 0.5 },
+              }}
+            >
+              🧑🏻‍💻
+            </motion.span>
+          </motion.a>
 
-        <AnimatedNavLink
-          href="/education"
-          className="nav-link"
-          index={2}
-          isActive={isActive("/education")}
-        >
-          Education
-        </AnimatedNavLink>
+          {/* THREE DOT BUTTON - mobile only (controlled by CSS) */}
+          <button
+            type="button"
+            className={`menu-toggle ${menuOpen ? "active" : ""}`}
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-        <AnimatedNavLink
-          href="/projects"
-          className="nav-link"
-          index={3}
-          isActive={isActive("/projects")}
-        >
-          Projects
-        </AnimatedNavLink>
+          {/* NAVBAR - RIGHT SIDE (dropdown on mobile) */}
+          <nav
+            className={`professional-nav ${menuOpen ? "open" : ""}`}
+            style={{ color: "#FAF6E3" }}
+          >
+            <ul className="nav-list">
+              <AnimatedNavLink
+                href="/home"
+                className="nav-link"
+                index={0}
+                isActive={isActive("/home")}
+              >
+                Home
+              </AnimatedNavLink>
 
-        <AnimatedNavLink
-          href="/skills"
-          className="nav-link"
-          index={4}
-          isActive={isActive("/skills")}
-        >
-          Skills
-        </AnimatedNavLink>
+              <AnimatedNavLink
+                href="/about"
+                className="nav-link"
+                index={1}
+                isActive={isActive("/about")}
+              >
+                About
+              </AnimatedNavLink>
 
-        <AnimatedNavLink
-          href="/contact"
-          className="nav-link"
-          index={5}
-          isActive={isActive("/contact")}
-        >
-          Contact
-        </AnimatedNavLink>
+              <AnimatedNavLink
+                href="/education"
+                className="nav-link"
+                index={2}
+                isActive={isActive("/education")}
+              >
+                Education
+              </AnimatedNavLink>
 
-      </ul>
-    </nav>
+              <AnimatedNavLink
+                href="/projects"
+                className="nav-link"
+                index={3}
+                isActive={isActive("/projects")}
+              >
+                Projects
+              </AnimatedNavLink>
 
-  </div>
+              <AnimatedNavLink
+                href="/skills"
+                className="nav-link"
+                index={4}
+                isActive={isActive("/skills")}
+              >
+                Skills
+              </AnimatedNavLink>
 
-  <motion.div
-    className="header-bottom-glow"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 1, delay: 0.8 }}
-  />
-</motion.header>
+              <AnimatedNavLink
+                href="/contact"
+                className="nav-link"
+                index={5}
+                isActive={isActive("/contact")}
+              >
+                Contact
+              </AnimatedNavLink>
+            </ul>
+          </nav>
+        </div>
 
-      <main className="flex-1">
-        {children}
-      </main>
+        <motion.div
+          className="header-bottom-glow"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+        />
+      </motion.header>
+
+      <main className="flex-1">{children}</main>
 
       {/* Dark footer */}
       <motion.div
